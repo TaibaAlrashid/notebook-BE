@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 let notes = require("./notes");
 
-const { noteFetch, deleteNote, createNote } = require("./controllers");
+const { noteFetch, deleteNote, createNote, fetchNote } = require("./controllers");
 
 router.get("/", noteFetch);
 
@@ -13,11 +13,7 @@ router.delete("/:noteId", deleteNote);
 router.post("/", createNote);
 
 
-router.get("/:noteId", (req, res) => {
-    const { noteId } = req.params;
-    const note = notes.find((_note) => _note.id === +noteId);
-    res.json(note);
-});
+router.get("/:noteId", fetchNote);
 
 
 

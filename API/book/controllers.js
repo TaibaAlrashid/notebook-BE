@@ -5,6 +5,12 @@ exports.noteFetch = (req, res) => {
     res.json(notes);
 };
 
+exports.fetchNote = (req, res) => {
+    const { noteId } = req.params;
+    const note = notes.find((_note) => _note.id === +noteId);
+    res.json(note);
+};
+
 // ****************** Delete ******************
 exports.deleteNote = (req, res) => {
     const { noteId } = req.params;
